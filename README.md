@@ -75,21 +75,25 @@ $ npm run start
 ### 项目结构：
 
 ```
-|- 根目录
-  |- app  // 项目目录
-    |-controller  // 项目控制器
-    |-service  // 项目数据操作层
-    |-views  // 项目模板目录
-    |-static // 静态文件开发目录
+| - 根目录
+  | - app  // 项目目录
+    | - controller  // 项目控制器
+    | - service  // 项目数据操作层
+    | - views  // 项目模板目录
+    | - static // 静态文件开发目录
   |- build  // webpack 配置类文件
-  |- config // 项目配置类文件
-    |- config.js  // 项目公告配置
-    |- router.js  // 路由配置
-  |- core  // koa封装类...
-  |- lib // 工具类
-  |- static  // webpack打包输入目录
-  |- index.js  // 项目启动文件
-  |- package.json // npm 依赖配置
-  |- README.md  // 项目说明
-  |- .gitignore  // git过滤配置
+    | - util.js
+    | - webpack.base.js  // webpack基础配置
+    | - webpack.dev.js  // webpack 开发配置
+    | - webpack.pro.js  // webpack 部署配置
+  | - config // 项目配置类文件
+    | - config.js  // 项目公告配置
+    | - router.js  // 路由配置
+  | - core  // koa封装类...
+  | - lib // 工具类
+  | - static  // webpack打包输入目录
+  | - index.js  // 项目启动文件
+  | - package.json // npm 依赖配置
+  | - README.md  // 项目说明
+  | - .gitignore  // git过滤配置
 ```
