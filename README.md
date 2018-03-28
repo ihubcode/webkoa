@@ -5,10 +5,10 @@
 
 ### 项目环境：
 
- - 操作系统：Windows 10
+ - 操作系统：Windows 10 or OS X 10.13.3
  - 开发工具： Visual Studio Code
  - 服务端框架：KOA2
- - 前端构建工具： Webpack
+ - 前端构建工具： Webpack@3.11.0
 
 
 
