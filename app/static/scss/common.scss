@@ -1,0 +1,28 @@
+.w-1200 {
+    margin:0 auto;
+    width: 1200px;
+}
+.page-header {
+    height: 80px;
+    border-bottom: 1px solid #ddd;
+    .logo {
+        float:left;
+        width: 200px;
+    }
+    ul {
+        float:right;
+        li {
+            float: left;
+            margin: 0 0 5px 20px;
+            a {
+                display:block;
+                line-height:40px;
+                font-size: 20px;
+                color:#333
+            }
+        }
+    }
+}
+.page-container {
+    
+}

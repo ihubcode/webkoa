@@ -2,7 +2,7 @@
  * @Author: dean.zhu86.@gmail.com 
  * @Date: 2018-03-28 10:33:42 
  * @Last Modified by: dean.zhu86@gmail.com
- * @Last Modified time: 2018-03-28 16:17:24
+ * @Last Modified time: 2018-03-28 17:11:55
  */
 
 const webpack = require('webpack');
@@ -72,7 +72,7 @@ const config = {
         new uglify(),
         new ManifestPlugin()
     ],
-    watch: true
+    watch: false
 };
 
 module.exports = config;
