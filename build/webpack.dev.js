@@ -2,15 +2,18 @@
  * @Author: dean.zhu86.@gmail.com 
  * @Date: 2018-03-28 10:33:42 
  * @Last Modified by: dean.zhu86@gmail.com
- * @Last Modified time: 2018-04-20 09:30:50
+ * @Last Modified time: 2018-04-20 15:56:24
  */
 
 const webpack = require('webpack');
 const path = require('path');
 const util = require('./util');
-// 一些插件安装
+
+//======== 一些插件安装  ===================================
+
+// 从 bundle 中提取文本（CSS）到单独的文件
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-//清理dist目录
+// 清理dist目录
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 // 生成manifest.json
 const ManifestPlugin = require('webpack-manifest-plugin');
@@ -87,6 +90,12 @@ const config = {
                     loader: 'babel-loader'
                 },
                 
+            },
+            {  // 使用htmlwebpackplugin时，设置.html的loader
+                test: '/\.html$',
+                use: {
+                    loader: 'html-loader'
+                }
             }
         ]
     },
@@ -94,7 +103,7 @@ const config = {
         new CleanWebpackPlugin(['../static']),
         new ExtractTextPlugin({
             filename: (getPath) => {
-                return getPath('[name].[chunkhash].css').replace('js', 'css');
+                return getPath('[name].[contenthash].css').replace('js', 'css');
             }
         }),
         // new HTMLWebpackPlugin({
@@ -117,7 +126,10 @@ const config = {
               }
         }),
         new uglify(),
-        new ManifestPlugin()
+        new ManifestPlugin(),
+        // new HtmlWebpackPlugin({
+        //     template: 'src/index.html'
+        // })
     ],
     watch: false
 };
