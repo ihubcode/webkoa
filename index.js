@@ -2,7 +2,7 @@
  * @Author: dean.zhu86.@gmail.com 
  * @Date: 2018-03-28 10:32:29 
  * @Last Modified by: dean.zhu86@gmail.com
- * @Last Modified time: 2018-03-28 15:23:10
+ * @Last Modified time: 2018-04-20 10:00:08
  */
 
 const Koa = require('koa');
@@ -17,7 +17,6 @@ const appConfig = require('./config/config.js');
 console.log('appConfig:', appConfig);
 //加载nunjucks模板引擎
 const koaNunjucks = require('koa-nunjucks-2');
-console.log('staticServer:', path.join(__dirname, 'static'));
 
 app.use(koaNunjucks({
   ext: 'html',
@@ -29,16 +28,10 @@ app.use(koaNunjucks({
 // 加载路由
 app.use(router.routes());
 app.use(router.allowedMethods());
+
+//静态资源请求
 app.use(staticServer(path.join(__dirname, './static')));
 
-// 加载webpack打包生成的manifest.json
-app.use(async (ctx, next) => {
-  const manifest = await fs.readFile(path.resolve(__dirname, 'static/manifest.json'));
-  ctx.state = {
-    static: JSON.parse(manifest.toString())
-  };
-  await next();
-});
 // 监听端口
 app.listen(appConfig.port);
 // app运行提示

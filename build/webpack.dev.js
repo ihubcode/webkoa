@@ -2,7 +2,7 @@
  * @Author: dean.zhu86.@gmail.com 
  * @Date: 2018-03-28 10:33:42 
  * @Last Modified by: dean.zhu86@gmail.com
- * @Last Modified time: 2018-03-28 17:11:55
+ * @Last Modified time: 2018-04-20 09:30:50
  */
 
 const webpack = require('webpack');
@@ -47,6 +47,46 @@ const config = {
                 //     'style-loader',
                 //     'css-loader'
                 // ]
+            },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    'file-loader',
+                    {
+                        loader: 'image-webpack-loader',
+                        options: {
+                            mozjpeg: { // jpeg格式图片压缩配置
+                                progressive: true,
+                                quality: 65
+                            },
+                            optipng: {
+                                enabled: false
+                            },
+                            pngquant: {  // png格式图片压缩配置
+                                quality: '65-90',
+                                spee: 4
+                            },
+                            gitsicle: {  // git格式图片压缩配置
+                                interlaced: false
+                            },
+                            svgo: {
+
+                            },
+                            webp: {  // jpg和png格式图片压缩成webp（更优的压缩算法，支持无/有损模式，支持alpha透明及动画，转化效果稳定）
+                                quality: 75
+                            }
+
+                        }
+                    }
+                ]
+            },
+            {
+                test: '/\.js$/',
+                exclude: /node_module/, //排除对指定目录的转译
+                use: {
+                    loader: 'babel-loader'
+                },
+                
             }
         ]
     },
@@ -59,6 +99,13 @@ const config = {
         }),
         // new HTMLWebpackPlugin({
         //     title: 'code splitting'
+        // }),
+        new webpack.HashedModuleIdsPlugin(),
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     name: 'vendor'
+        // }),
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     name: 'manifest'
         // }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common',  // 公共bundle的名称

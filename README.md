@@ -26,15 +26,33 @@ npm install sass-loader node-sass --save-dev
 // 分离js入口文件中import的css文件
 npm install extract-text-webpack-plugin --save-dev
 
+// 处理图片，对未设置或者小于limit设置的图片进行转换，以base64的格式被img的src使用；对于大于limit的图片用file-loader进行解析
+npm install url-loader --save-dev
+
 // 清理/dist 文件夹
 npm install clean-webpack-plugin --save-dev
 
-//
+// js压缩
 npm install uglifyjs-webpack-plugin --save-dev
 
-//
+//生成manifest.json 文件
 npm install webpack-manifest-plugin --save-dev
 
+// babel编译
+// babel核心包
+npm install babel-core --save-dev
+
+// babel的loader包
+npm install babel-loader --save-dev
+
+// babel解析es6的包（webpack最新推荐，代替babel-preset-es2015）
+npm install babel-preset-env --save-dev
+
+//解决由于辅助代码的引入造成代码体积过大的问题
+npm install babel-plugin-transform-runtime --save-dev
+
+// 
+npm install babel-runtime --save
 ```
 
 - **Koa 需要安装的依赖包：**
